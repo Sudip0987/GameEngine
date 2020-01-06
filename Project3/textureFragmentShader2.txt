@@ -1,0 +1,18 @@
+#version 330 core
+//fragment shader must pass 1 vec4 OUT to next part of pipeline
+//to describe colour
+out vec4 FragColor;
+
+//catch values passed out from vertex shader (names must match!!!)
+in vec4 vertexColour;
+in vec2 TexCoord;
+
+//uniforms are global variables we can set from our code directly
+uniform sampler2D texture1; //reference texture slot on our gfx card
+uniform sampler2D texture2;
+
+void main()
+{
+//0.2 means 20% of texture2 and 80% of texture1
+	FragColor = mix(texture(texture1, TexCoord), texture(texture2, TexCoord),0.2) * vertexColour ;
+}

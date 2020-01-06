@@ -1,0 +1,31 @@
+#version 330 core
+
+//values passed in via VBO vertex data
+//your VAO remembers the attribPointers(location and how much
+//									vertex data to pass to it)
+layout (location = 0) in vec3 aPos;
+layout (location = 1) in vec3 aColour;
+layout (location = 2) in vec2 aTexCoord; //texture coordinate associated with this position
+
+
+//variables passed onto next shaders IN variable of same name
+out vec4 vertexColour;
+out vec2 TexCoord; //pass to fragment shader
+
+//moves 3d object into world space
+uniform mat4 model;
+//moves object with relation to where camera is
+uniform mat4 view;
+//clip vertices outside viewing frustrum and convert to NDC coordinates
+uniform mat4 projection;
+
+void main()
+{
+	//note: matrix multiplication happens Right to Left <----------
+	gl_Position = projection*view*model*vec4(aPos, 1.0);
+	
+	vertexColour = vec4(aColour, 1.0);
+	
+	TexCoord = aTexCoord;//in from VBO then out to fragment shader
+
+}

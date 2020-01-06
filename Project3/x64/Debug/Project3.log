@@ -1,0 +1,12 @@
+﻿  glad.c
+  main.cpp
+C:\Users\Sudip\source\repos\My Project\Project3\main.cpp(87,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  Pentagon.cpp
+C:\Users\Sudip\source\repos\My Project\Project3\Pentagon.cpp(15,3): warning C4305: 'initializing': truncation from 'double' to 'float'
+  Rectangle.cpp
+  Shader.cpp
+C:\Users\Sudip\source\repos\My Project\Project3\Shader.cpp(36,6): warning C4101: 'success': unreferenced local variable
+  testing.cpp
+  TextureLoader.cpp
+  Generating Code...
+  Project3.vcxproj -> C:\Users\Sudip\source\repos\My Project\x64\Debug\Project3.exe

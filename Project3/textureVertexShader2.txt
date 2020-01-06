@@ -1,0 +1,28 @@
+#version 330 core
+
+//values passed in via VBO vertex data
+//your VAO remembers the attribPointers(location and how much
+//									vertex data to pass to it)
+layout (location = 0) in vec3 aPos;
+layout (location = 1) in vec3 aColour;
+layout (location = 2) in vec2 aTexCoord; //texture coordinate associated with this position
+
+
+//variables passed onto next shaders IN variable of same name
+out vec4 vertexColour;
+out vec2 TexCoord; //pass to fragment shader
+
+//uniform can be accessed via code. mat4 is a 4x4 matrix
+//transform matrix will include translation, scale and rotatiation data
+uniform mat4 transform;
+
+void main()
+{
+	//vertex shader MUST pass a vec4 to gl_Position to help shape assembly
+	gl_Position = transform * vec4(aPos, 1.0);
+	
+	vertexColour = vec4(aColour, 1.0);
+	
+	TexCoord = aTexCoord;//in from VBO then out to fragment shader
+
+}
